@@ -13,26 +13,27 @@ import lombok.Setter;
 @AllArgsConstructor
 @Setter
 @Getter
-public class Product {
+public class PurchaseTicket {
 
     @Id
     @SequenceGenerator(
-            name = "product_sequence",
-            sequenceName = "product_sequence",
+            name = "purchaseTicket_sequence",
+            sequenceName = "purchaseTicket_sequence",
             allocationSize = 1)
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "product_sequence")
+            generator = "purchaseTicket_sequence")
     private Long id;
 
-    private String name;
 
-    private Double price;
-
-    private Integer quantity;
+    private String description;
 
 
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    private Category category;
+    private Integer items;
+
+    @OneToMany
+    @JoinColumn(name = "product_id")
+    private Product product;
+
+
 }
