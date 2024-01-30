@@ -4,6 +4,9 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import toniazzo.project.store.entity.Product;
 import toniazzo.project.store.repository.ProductRepository;
+import org.springframework.stereotype.Service;
+import toniazzo.project.store.entity.Product;
+import toniazzo.project.store.repository.ProductRepository;
 import java.util.List;
 
 @Service
@@ -39,8 +42,6 @@ public class ProductService {
     @Transactional
     public void updateProduct(Long productId) {
         Product product = productRepository.findById(productId).orElseThrow(() -> new IllegalStateException("The Product with id" + productId + "already exists."));
-
-        //TODO
     }
 
 }

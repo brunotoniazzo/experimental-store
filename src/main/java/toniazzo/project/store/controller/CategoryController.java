@@ -8,7 +8,6 @@ import toniazzo.project.store.service.CategoryService;
 @RequestMapping("category")
 public class CategoryController {
 
-
     private final CategoryService categoryService;
 
     public CategoryController(CategoryService categoryService) {
