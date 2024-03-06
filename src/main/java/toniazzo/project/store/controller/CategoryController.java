@@ -1,7 +1,11 @@
 package toniazzo.project.store.controller;
 
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import toniazzo.project.store.entity.Category;
 import toniazzo.project.store.service.CategoryService;
 
 @Controller
@@ -14,7 +18,9 @@ public class CategoryController {
         this.categoryService = categoryService;
     }
 
-    public void saveCategory() {
-        //TODO SAVE METHOD TO CATEGORY
+    @PostMapping
+    @Transactional
+    public void saveCategory(@RequestBody Category category) {
+        categoryService.saveCategory(category);
     }
 }
