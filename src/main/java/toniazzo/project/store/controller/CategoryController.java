@@ -1,15 +1,16 @@
 package toniazzo.project.store.controller;
 
 import jakarta.transaction.Transactional;
+import jakarta.websocket.server.PathParam;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import toniazzo.project.store.entity.Category;
 import toniazzo.project.store.service.CategoryService;
 
+import java.util.List;
+
 @Controller
-@RequestMapping("category")
+@RequestMapping("/category")
 public class CategoryController {
 
     private final CategoryService categoryService;
@@ -18,9 +19,24 @@ public class CategoryController {
         this.categoryService = categoryService;
     }
 
+    @GetMapping
+    List<Category> getAllCategories() {
+        return categoryService.getAllCategories();
+    }
+
     @PostMapping
     @Transactional
-    public void saveCategory(@RequestBody Category category) {
-        categoryService.saveCategory(category);
+    List<Category> saveCategory(@RequestBody Category category) {
+        return categoryService.saveCategory(category);
     }
+
+    List<Category> updateCategory(@RequestBody Category category) {
+        return categoryService.updateCategory(category);
+    }
+
+    @DeleteMapping("{id}")
+    List<Category> deleteCategory(@PathVariable("id") Long id) {
+        return categoryService.deleteCategory(id);
+    }
+
 }

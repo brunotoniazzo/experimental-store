@@ -1,6 +1,7 @@
 package toniazzo.project.store.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import toniazzo.project.store.entity.Category;
 import toniazzo.project.store.repository.CategoryRepository;
@@ -18,15 +19,24 @@ public class CategoryService {
     }
 
     public List<Category> getAllCategories() {
-        return categoryRepository.findAll();
+        Sort sort = Sort.by("name".toUpperCase()).descending().and(
+                Sort.by("name".toUpperCase()).ascending());
+        return categoryRepository.findAll(sort);
     }
 
-    public void saveCategory(Category category) {
+    public List<Category> saveCategory(Category category) {
         categoryRepository.save(category);
+        return getAllCategories();
     }
 
-    public void deleteCategory (Long categoryId) {
+    public List<Category> deleteCategory (Long categoryId) {
         categoryRepository.deleteById(categoryId);
+        return getAllCategories();
+    }
+
+    public List<Category> updateCategory (Category category) {
+        categoryRepository.save(category);
+        return getAllCategories();
     }
 
 }

@@ -7,8 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
-@Table
+@Entity(name = "Product")
+@Table(name = "products")
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
@@ -24,13 +24,11 @@ public class Product {
             strategy = GenerationType.SEQUENCE,
             generator = "product_sequence")
     private Long id;
-
     private String name;
 
     private Double price;
 
     private Integer quantity;
-
 
     @ManyToOne
     @JoinColumn(name = "category_id")

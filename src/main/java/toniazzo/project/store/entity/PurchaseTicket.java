@@ -7,8 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
-@Table
+@Entity(name = "PurchaseTicket")
+@Table(name = "purchaseTickets")
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
@@ -25,9 +25,7 @@ public class PurchaseTicket {
             generator = "purchaseTicket_sequence")
     private Long id;
 
-
     private String description;
-
 
     private Integer items;
 
