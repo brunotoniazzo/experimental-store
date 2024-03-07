@@ -32,13 +32,15 @@ public class ProductService {
     }
 
     @Transactional
-    public List<Product> updateProduct(Long productId) {
-        Product product = productRepository.findById(productId).orElseThrow(() -> new IllegalStateException(
+    public List<Product> updateProduct(Product product, Long productId) {
+        productRepository.findById(productId).orElseThrow(() -> new IllegalStateException(
                 "The Product with id" + productId + "already exists."));
+
+        productRepository.save(product);
         return getAllProducts();
     }
 
-    public void deleteProduct(Long productId) {
+    public List<Product> deleteProduct(Long productId) {
         boolean productExist = productRepository.existsById(productId);
 
         if (!productExist) {
@@ -46,6 +48,7 @@ public class ProductService {
         }
 
         productRepository.deleteById(productId);
+        return getAllProducts();
     }
 
 }

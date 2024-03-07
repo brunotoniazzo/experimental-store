@@ -30,6 +30,7 @@ public class CategoryController {
         return categoryService.saveCategory(category);
     }
 
+    @PutMapping
     List<Category> updateCategory(@RequestBody Category category) {
         return categoryService.updateCategory(category);
     }
