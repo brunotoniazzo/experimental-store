@@ -22,10 +22,4 @@ public class PurchaseTicket {
     private String description;
 
     private Integer items;
-
-    @OneToMany
-    @JoinColumn(name = "product_id")
-    private Product product;
-
-
 }

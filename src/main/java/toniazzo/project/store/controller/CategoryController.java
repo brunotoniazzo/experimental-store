@@ -1,15 +1,13 @@
 package toniazzo.project.store.controller;
 
 import jakarta.transaction.Transactional;
-import jakarta.websocket.server.PathParam;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import toniazzo.project.store.entity.Category;
 import toniazzo.project.store.service.CategoryService;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping(path = "/categories")
 public class CategoryController {
 
