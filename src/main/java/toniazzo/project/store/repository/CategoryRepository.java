@@ -6,5 +6,4 @@ import toniazzo.project.store.entity.Category;
 
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Long> {
-
 }

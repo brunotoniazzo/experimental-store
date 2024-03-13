@@ -8,7 +8,7 @@ import toniazzo.project.store.service.ProductService;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/api/products")
+@RequestMapping(path = "/api/products/")
 public class ProductController {
 
     private final ProductService productService;
@@ -24,13 +24,13 @@ public class ProductController {
 
     @PostMapping
     @Transactional
-    List<Product> saveProduct(@RequestBody Product product, Long productId){
-        return productService.saveProduct(product, productId);
+    List<Product> saveProduct(@RequestBody Product product){
+        return productService.saveProduct(product);
     }
 
     @PutMapping
-    List<Product> updateProduct(@RequestBody Product product, Long productId){
-        return productService.updateProduct(product, productId);
+    List<Product> updateProduct(@RequestBody Product product){
+        return productService.updateProduct(product);
     }
 
     @DeleteMapping("{id}")

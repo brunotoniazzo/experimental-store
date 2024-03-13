@@ -1,6 +1,5 @@
 package toniazzo.project.store.service;
 
-import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import toniazzo.project.store.entity.Product;
@@ -19,35 +18,23 @@ public class ProductService {
 
     public List<Product> getAllProducts() {
         Sort sort = Sort.by(
-                Sort.Order.asc("id").ignoreCase());
+                Sort.Order.by("name").ignoreCase(),
+                Sort.Order.asc("name").ignoreCase());
         return productRepository.findAll(sort);
     }
 
-    public List<Product> saveProduct(Product product, Long productId) {
-        if (productRepository.existsById(productId)) {
-            throw new IllegalStateException("Product with id " + productId + " already exists.");
-        }
-        productRepository.save(product);
-        return getAllProducts();
-    }
-
-    @Transactional
-    public List<Product> updateProduct(Product product, Long productId) {
-        productRepository.findById(productId).orElseThrow(() -> new IllegalStateException(
-                "The Product with id" + productId + "already exists."));
-
+    public List<Product> saveProduct(Product product) {
         productRepository.save(product);
         return getAllProducts();
     }
 
     public List<Product> deleteProduct(Long productId) {
-        boolean productExist = productRepository.existsById(productId);
-
-        if (!productExist) {
-            throw new IllegalStateException("The product with"+ productId + " doesn't exists");
-        }
-
         productRepository.deleteById(productId);
+        return getAllProducts();
+    }
+
+    public List<Product> updateProduct(Product product) {
+        productRepository.save(product);
         return getAllProducts();
     }
 
