@@ -18,8 +18,8 @@ public class ProductService {
     }
 
     public List<Product> getAllProducts() {
-        Sort sort = Sort.by("id".toUpperCase()).descending().and(
-                Sort.by("id".toUpperCase()).ascending());
+        Sort sort = Sort.by(
+                Sort.Order.asc("id").ignoreCase());
         return productRepository.findAll(sort);
     }
 

@@ -19,8 +19,9 @@ public class CategoryService {
     }
 
     public List<Category> getAllCategories() {
-        Sort sort = Sort.by("name".toUpperCase()).descending().and(
-                Sort.by("name".toUpperCase()).ascending());
+        Sort sort = Sort.by(
+                Sort.Order.by("description").ignoreCase(),
+                Sort.Order.asc("description").ignoreCase());
         return categoryRepository.findAll(sort);
     }
 

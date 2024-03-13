@@ -8,7 +8,7 @@ import toniazzo.project.store.service.ProductService;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/products")
+@RequestMapping(path = "/api/products")
 public class ProductController {
 
     private final ProductService productService;
