@@ -16,13 +16,7 @@ import lombok.Setter;
 public class PurchaseTicket {
 
     @Id
-    @SequenceGenerator(
-            name = "purchaseTicket_sequence",
-            sequenceName = "purchaseTicket_sequence",
-            allocationSize = 1)
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "purchaseTicket_sequence")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String description;

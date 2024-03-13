@@ -10,7 +10,7 @@ import toniazzo.project.store.service.CategoryService;
 import java.util.List;
 
 @Controller
-@RequestMapping("/category")
+@RequestMapping(path = "/categories")
 public class CategoryController {
 
     private final CategoryService categoryService;
