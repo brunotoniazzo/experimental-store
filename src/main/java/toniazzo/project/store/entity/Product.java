@@ -2,6 +2,7 @@ package toniazzo.project.store.entity;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -32,6 +33,7 @@ public class Product {
     private Integer quantity;
 
     @NotNull(message = "Category ID cannot be empty")
+    @Valid
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;

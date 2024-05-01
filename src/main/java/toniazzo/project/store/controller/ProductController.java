@@ -1,6 +1,7 @@
 package toniazzo.project.store.controller;
 
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 import toniazzo.project.store.entity.Product;
 import toniazzo.project.store.service.ProductService;
@@ -24,12 +25,12 @@ public class ProductController {
 
     @PostMapping
     @Transactional
-    List<Product> saveProduct(@RequestBody Product product){
+    List<Product> saveProduct(@RequestBody @Valid Product product){
         return productService.saveProduct(product);
     }
 
     @PutMapping
-    List<Product> updateProduct(@RequestBody Product product){
+    List<Product> updateProduct(@RequestBody @Valid Product product){
         return productService.updateProduct(product);
     }
 
