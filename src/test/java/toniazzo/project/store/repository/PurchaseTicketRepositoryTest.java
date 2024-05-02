@@ -1,7 +1,10 @@
 package toniazzo.project.store.repository;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.context.ActiveProfiles;
 
+@DataJpaTest
+@ActiveProfiles("test")
 class PurchaseTicketRepositoryTest {
 
 }
