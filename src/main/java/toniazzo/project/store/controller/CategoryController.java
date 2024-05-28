@@ -24,10 +24,10 @@ public class CategoryController {
         return categoryService.getAllCategories();
     }
 
-    @GetMapping
-    Page<Category> getAllCategoriesByPage(Pageable pageable) {
-        return categoryService.getAllCategoriesByPage(pageable);
-    }
+//    @GetMapping
+//    Page<Category> getAllCategoriesByPage(Pageable pageable) {
+//        return categoryService.getAllCategoriesByPage(pageable);
+//    }
 
     @PostMapping
     @Transactional
